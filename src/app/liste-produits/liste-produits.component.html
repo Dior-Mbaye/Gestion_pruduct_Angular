@@ -1,0 +1,55 @@
+<div class="container" style="margin-top: 30px">
+  <div class="row" style="justify-content: space-around">
+    <div class="card" style="width: 10rem;height: 10rem">
+      <div class="card-body">
+        <h6 class="card-title">Catégories</h6>
+        <p class="card-text" style="font-size: 50px;text-align: center;color: cornflowerblue">{{nbProducts}}</p>
+      </div>
+    </div>
+    <div class="card" style="width: 10rem;height: 10rem">
+      <div class="card-body">
+        <h6 class="card-title">Produits</h6>
+        <p class="card-text" style="font-size: 50px;text-align: center;color: cyan">{{nbProductsTotal}}</p>
+      </div>
+    </div>
+    <div class="card" style="width: 10rem;height: 10rem">
+      <div class="card-body">
+        <h6 class="card-title">Prix total</h6>
+        <p class="card-text" style="font-size: 50px;text-align: center;color: aquamarine">{{totalEnStock}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-12" style="margin-top: 30px">
+  <div class="panel panel-default">
+    <table class="table">
+      <tr *ngFor='let product of products'>
+        <td class="middle">
+          <div class="media" style="margin: 5px">
+            <div class="media-body">
+              <h4 class="media-heading"><img src="{{product.photo}}" style="width: 70px;height: 70px;border-radius: 10px" /><small> {{product.nom}}   {{product.prix}} F CFA</small> </h4>
+              <details>
+                <summary style="margin: 5px;cursor: pointer">Détails</summary>
+                <address style="margin: 5px">
+                  <strong>Description:</strong> {{product.description}}<br>
+                  <strong>Quantité restante:</strong> {{product.quantite}}<br>
+                </address>
+              </details>
+            </div>
+          </div>
+        </td>
+        <td width="100" class="middle">
+          <div>
+            <a [routerLink]="[product.id]"  title="Modifier" style="margin: 5px">
+              <button class="btn btn-info btn-sm" style="width: 80px">Modifier</button>
+            </a>
+            <a (click)="delete(product.id)"  title="Supprimer" style="margin: 5px">
+              <button class="btn btn-danger btn-sm" style="width: 80px;margin-top: 10px">Supprimer</button>
+            </a>
+          </div>
+        </td>
+      </tr>
+      <tr>
+    </table>
+  </div>
+</div>
